@@ -1,8 +1,8 @@
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import SimpleLightbox from 'simplelightbox';
 import Notiflix from 'notiflix';
-import refs from './refs.js';
-import { isSubmit } from './index.js';
+import refs from '../refs/refs.js';
+import { isSubmit } from '../index.js';
 
 let countPageLength = 0;
 export let isAnyMore = true;
@@ -25,8 +25,9 @@ const removeClassHidden = () => {
   refs.galleryEnd.classList.remove('visually-hidden');
 };
 
-const marcupCards = cards => {
+const checks = cards => {
   const { hits } = cards.data;
+
   if (isSubmit) countPageLength = 0;
 
   if (countPageLength === 0) {
@@ -47,6 +48,10 @@ const marcupCards = cards => {
     isEmptyResponce();
   }
 
+  return marcupCards(hits);
+};
+
+const marcupCards = hits => {
   return hits
     .map(({ largeImageURL, webformatURL, tags, likes, views, comments, downloads }) => {
       return `
@@ -79,7 +84,7 @@ const marcupCards = cards => {
 };
 
 const innerHtml = data => {
-  refs.gallery.insertAdjacentHTML('beforeend', marcupCards(data));
+  refs.gallery.insertAdjacentHTML('beforeend', checks(data));
 
   const instance = new SimpleLightbox('.gallery a', {
     showCounter: false,

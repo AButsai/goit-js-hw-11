@@ -1,7 +1,7 @@
-import Response from './Response.js';
-import innerHtml from './markup-cards.js';
-import { isAnyMore } from './markup-cards.js';
-import refs from './refs.js';
+import Response from './classes/Response.js';
+import innerHtml from './components/markup-cards.js';
+import { isAnyMore } from './components/markup-cards.js';
+import refs from './refs/refs.js';
 import Notiflix from 'notiflix';
 
 export let isSubmit = false;
