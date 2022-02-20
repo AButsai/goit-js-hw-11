@@ -2,7 +2,7 @@ import apiResponse from './api.js';
 
 const BASE_URL = 'https://pixabay.com/api/';
 const KEY = '25616103-aed40349c0d62d7a529b2f151';
-const PER_PAGE = 100;
+const PER_PAGE = 40;
 const requestParam = 'image_type=photo&orientation=horizontal&safesearch=true';
 
 export default class Response {

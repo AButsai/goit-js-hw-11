@@ -2,6 +2,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 import SimpleLightbox from 'simplelightbox';
 import Notiflix from 'notiflix';
 import refs from './refs.js';
+import { isSubmit } from './index.js';
 
 let countPageLength = 0;
 export let isAnyMore = true;
@@ -25,23 +26,33 @@ const removeClassHidden = () => {
 };
 
 const marcupCards = cards => {
-  const card = cards.data.hits;
-  if (card.length === 0) {
+  const { hits } = cards.data;
+  if (isSubmit) {
+    countPageLength = 0;
+  }
+
+  if (hits.length === 0) {
     addClassHidden();
     isEmptyResponce();
   }
 
-  if (countPageLength === 0) totalHits(cards.data.totalHits);
+  if (countPageLength === 0) {
+    totalHits(cards.data.totalHits);
+    isAnyMore = true;
+    addClassHidden();
+  }
 
-  countPageLength += card.length;
+  countPageLength += hits.length;
 
-  if (cards.data.totalHits < countPageLength) {
-    countPageLength = 0;
+  if (cards.data.totalHits <= countPageLength) {
     removeClassHidden();
     isAnyMore = false;
   }
 
-  return card
+  console.log('cards.data.totalHits :>> ', cards.data.totalHits);
+  console.log('countPageLength :>> ', countPageLength);
+
+  return hits
     .map(({ largeImageURL, webformatURL, tags, likes, views, comments, downloads }) => {
       return `
 	 <div class="photo-card">
@@ -78,7 +89,7 @@ function smoothScroll() {
     .firstElementChild.getBoundingClientRect();
 
   window.scrollBy({
-    top: cardHeight * 2,
+    top: cardHeight,
     behavior: 'smooth',
   });
 }

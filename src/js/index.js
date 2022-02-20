@@ -4,12 +4,14 @@ import { isAnyMore } from './markup-cards.js';
 import refs from './refs.js';
 import Notiflix from 'notiflix';
 
+export let isSubmit = false;
+
 const response = new Response();
-let anyMore = isAnyMore;
 
 const markupResponse = async () => {
   const fetchResponse = await response.getResponse();
   innerHtml(fetchResponse);
+  isSubmit = false;
 };
 
 const reset = () => {
@@ -17,7 +19,7 @@ const reset = () => {
   refs.gallery.innerHTML = '';
   refs.galleryEnd.classList.add('visually-hidden');
   response.searchName = '';
-  anyMore = true;
+  isSubmit = true;
 };
 
 const handleSubmitForm = e => {
@@ -40,8 +42,7 @@ const handelScroll = () => {
   const scrollHeight = document.documentElement.scrollHeight;
   const scrollTop = document.documentElement.scrollTop;
   const clientHeight = document.documentElement.clientHeight;
-  if (!anyMore) {
-    refs.preloader.style.display = 'none';
+  if (!isAnyMore) {
     return;
   }
   if (scrollTop + clientHeight === scrollHeight) {
