@@ -29,11 +29,6 @@ const marcupCards = cards => {
   const { hits } = cards.data;
   if (isSubmit) countPageLength = 0;
 
-  if (hits.length === 0) {
-    addClassHidden();
-    isEmptyResponce();
-  }
-
   if (countPageLength === 0) {
     totalHits(cards.data.totalHits);
     isAnyMore = true;
@@ -47,8 +42,10 @@ const marcupCards = cards => {
     isAnyMore = false;
   }
 
-  console.log('cards.data.totalHits :>> ', cards.data.totalHits);
-  console.log('countPageLength :>> ', countPageLength);
+  if (hits.length === 0) {
+    addClassHidden();
+    isEmptyResponce();
+  }
 
   return hits
     .map(({ largeImageURL, webformatURL, tags, likes, views, comments, downloads }) => {
@@ -87,7 +84,9 @@ const innerHtml = data => {
   const instance = new SimpleLightbox('.gallery a', {
     showCounter: false,
   });
-  instance.refresh();
+  if (!isSubmit) {
+    instance.refresh();
+  }
 };
 
 export default innerHtml;

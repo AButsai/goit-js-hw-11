@@ -5,7 +5,7 @@ async function apiResponse(url) {
     const response = await axios.get(url);
     return response;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 }
 
