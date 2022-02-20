@@ -27,9 +27,7 @@ const removeClassHidden = () => {
 
 const marcupCards = cards => {
   const { hits } = cards.data;
-  if (isSubmit) {
-    countPageLength = 0;
-  }
+  if (isSubmit) countPageLength = 0;
 
   if (hits.length === 0) {
     addClassHidden();
@@ -83,20 +81,8 @@ const marcupCards = cards => {
     .join('');
 };
 
-function smoothScroll() {
-  const { height: cardHeight } = document
-    .querySelector('.photo-card')
-    .firstElementChild.getBoundingClientRect();
-
-  window.scrollBy({
-    top: cardHeight,
-    behavior: 'smooth',
-  });
-}
-
 const innerHtml = data => {
   refs.gallery.insertAdjacentHTML('beforeend', marcupCards(data));
-  if (data.data.hits.length < countPageLength) smoothScroll();
 
   const instance = new SimpleLightbox('.gallery a', {
     showCounter: false,
