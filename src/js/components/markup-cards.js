@@ -90,7 +90,7 @@ const innerHtml = data => {
     showCounter: false,
   });
   if (!isSubmit) {
-    instance.refresh();
+    // instance.refresh();
   }
 };
 
