@@ -1,4 +1,4 @@
-import apiResponse from './api.js';
+import apiResponse from '../api/api.js';
 
 const BASE_URL = 'https://pixabay.com/api/';
 const KEY = '25616103-aed40349c0d62d7a529b2f151';
