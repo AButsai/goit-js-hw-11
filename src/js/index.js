@@ -9,9 +9,13 @@ export let isSubmit = false;
 const response = new Response();
 
 const markupResponse = async () => {
-  const fetchResponse = await response.getResponse();
-  innerHtml(fetchResponse);
-  isSubmit = false;
+  try {
+    const fetchResponse = await response.getResponse();
+    innerHtml(fetchResponse);
+    isSubmit = false;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const reset = () => {

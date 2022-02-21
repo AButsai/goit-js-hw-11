@@ -28,10 +28,15 @@ const removeClassHidden = () => {
 const checks = cards => {
   const { hits } = cards.data;
 
-  if (isSubmit) countPageLength = 0;
+  if (isSubmit) {
+    countPageLength = 0;
+  }
+
+  if (hits.length === 40 && isSubmit) {
+    totalHits(cards.data.totalHits);
+  }
 
   if (countPageLength === 0) {
-    totalHits(cards.data.totalHits);
     isAnyMore = true;
     addClassHidden();
   }
@@ -88,6 +93,12 @@ const innerHtml = data => {
 
   const instance = new SimpleLightbox('.gallery a', {
     showCounter: false,
+    captions: true,
+    captionDelay: 250,
+    captionSelector: 'img',
+    captionType: 'attr',
+    captionsData: 'alt',
+    captionPosition: 'bottom',
   });
   if (!isSubmit) {
     instance.refresh();

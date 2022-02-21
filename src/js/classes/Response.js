@@ -1,4 +1,4 @@
-import apiResponse from '../api/api.js';
+import axios from 'axios';
 
 const BASE_URL = 'https://pixabay.com/api/';
 const KEY = '25616103-aed40349c0d62d7a529b2f151';
@@ -14,9 +14,13 @@ export default class Response {
 
   async getResponse() {
     this._url = `${BASE_URL}?key=${KEY}&q=${this._searchName}&${requestParam}&page=${this._page}&per_page=${PER_PAGE}`;
-    const response = await apiResponse(this._url);
-    this._page += 1;
-    return response;
+    try {
+      const response = await axios.get(this._url);
+      this._page += 1;
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   get searchName() {
