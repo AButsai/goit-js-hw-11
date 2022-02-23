@@ -5,7 +5,7 @@ const KEY = '25616103-aed40349c0d62d7a529b2f151';
 const PER_PAGE = 40;
 const requestParam = 'image_type=photo&orientation=horizontal&safesearch=true';
 
-export default class Response {
+class Response {
   constructor() {
     this._searchName = '';
     this._page = 1;
@@ -39,3 +39,5 @@ export default class Response {
     this._page = newPage;
   }
 }
+
+export default Response;

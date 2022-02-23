@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <header id="header" class="header">
+    <header class="header">
       <form class="search-form" id="search-form">
         <input type="text" name="searchQuery" autocomplete="off" placeholder="Search images..." />
         <button type="submit">Search</button>
@@ -22,15 +22,15 @@
     </header>
     <section id="section" class="section">
       <div class="gallery"></div>
-      <a class="gallery-end__text visually-hidden" href="#section">
+      <div class="gallery__end visually-hidden">
         "We're sorry, but you've reached the end of search results."
-      </a>
+      </div>
       <div id="preloader" class="visually-hidden">
         <div class="preloader__first"></div>
         <div class="preloader__second"></div>
         <div class="preloader__third"></div>
       </div>
     </section>
-    <script src="./js/index.js"></script>
+    <script src="./index.js"></script>
   </body>
 </html>

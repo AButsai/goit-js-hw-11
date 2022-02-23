@@ -1,7 +1,7 @@
 const refs = {
   searchForm: document.querySelector('#search-form'),
   gallery: document.querySelector('.gallery'),
-  galleryEnd: document.querySelector('.gallery-end__text'),
+  galleryLinkEnd: document.querySelector('.gallery__end'),
   preloader: document.querySelector('#preloader'),
 };
 
