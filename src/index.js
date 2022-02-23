@@ -12,10 +12,14 @@ let totalHits = 0;
 
 const marcupCards = async () => {
   if (!isResponse) return;
-  const requestResponse = await response.getResponse();
-  checks(requestResponse);
-  simpleLightbox();
-  infinitiObserver();
+  try {
+    const requestResponse = await response.getResponse();
+    checks(requestResponse);
+    simpleLightbox();
+    infinitiObserver();
+  } catch {
+    console.error(error);
+  }
 };
 
 const reset = () => {
