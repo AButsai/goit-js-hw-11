@@ -152,16 +152,19 @@ img {
 
 .preloader__first {
   border-bottom: 3px solid #14e2e9;
+  box-shadow: 0 1px 1px #14e2e9;
   animation-name: first;
 }
 
 .preloader__second {
-  border-right: 3px solid #14e2e9;
+  border-right: 3px solid #e91414;
+  box-shadow: 0 1px 1px #e91414;
   animation-name: second;
 }
 
 .preloader__third {
-  border-top: 3px solid #14e2e9;
+  border-top: 3px solid #e914de;
+  box-shadow: 0 1px 1px #e914de;
   animation-name: third;
 }
 

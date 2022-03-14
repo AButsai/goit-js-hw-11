@@ -4,6 +4,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import refs from './js/refs/refs.js';
 import Response from './js/responseClass/response.js';
 import marcupCardsImages from './js/marcup/marcup.js';
+import getColor from './js/hover-card/hover.js';
 
 const response = new Response();
 let isSubmit = false;
@@ -17,6 +18,7 @@ const marcupCards = async () => {
     checks(requestResponse);
     simpleLightbox();
     infinitiObserver();
+    getColor();
   } catch {
     console.error(error);
   }
